@@ -70,7 +70,7 @@ Crea un enlace en `~/Library/Application Support/REAPER/Effects/Nube Comp/`. En 
 ## Estructura
 
 - `nube_comp.jsfx`: el plugin (DSP + interfaz).
-- `tests/run.sh`: renderiza 49 casos en una pestaña temporal de REAPER y los compara con la teoría (61 chequeos):
+- `tests/run.sh`: renderiza 49 casos en una pestaña temporal de REAPER y los compara con la teoría (56 chequeos, más que ningún render tenga NaN ni quede desalineado):
   curva estática (dura, rodilla, ∞:1, rango), ganancia y auto ganancia, mezcla, RMS, enlace, M/S, solo Mid/Side,
   sidechain externo, filtros y enfoque del SC, escuchar SC y cambios, tiempos de ataque/release/hold, lookahead
   (y que la latencia quede compensada), armónicos del color, los 5 estilos y los 12 presets.
