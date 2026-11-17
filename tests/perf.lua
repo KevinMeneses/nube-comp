@@ -1,5 +1,5 @@
 -- Peor caso: M/S, lookahead, los 3 filtros del sidechain, Opto + auto release, color, mezcla; render de 60 s.
-local OUT = os.getenv("HOME") .. "/Music/NubeComp/tests/out"
+local OUT = debug.getinfo(1, "S").source:match("^@(.*)/[^/]*$") .. "/out"
 local AUDIO = os.getenv("HOME") .. "/Music/ClaudeBeats/Master/Nube baja (master X20).wav"
 local f = io.open(OUT .. "/perf.txt", "w")
 reaper.Main_OnCommand(40859, 0)

@@ -1,6 +1,7 @@
 desc:Nube Comp - compresor (5 estilos, color, sidechain, M/S, lookahead)
 //tags: compressor dynamics sidechain mid-side lookahead saturation parallel
-//author: Kev Meneses + Claude
+//author: Kev Meneses + Claude (Claude Code)
+//license: GPL-3.0-or-later
 //version: 1.0.0
 
 slider1:-18<-60,0,0.1>-Umbral (dB)

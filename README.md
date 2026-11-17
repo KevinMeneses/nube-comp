@@ -1,6 +1,27 @@
+<!-- en -->
 # Nube Comp
 
-Compresor para REAPER (JSFX, macOS/Windows/Linux), hermano de [Nube EQ](../NubeEQ): fácil de usar, con todo lo de
+A free compressor for [REAPER](https://www.reaper.fm), written as a JSFX (macOS / Windows / Linux), part of the
+[Nube plugins](https://github.com/KevinMeneses/nube-plugins).
+
+![Nube Comp](docs/captura.png)
+
+5 styles (Clean, Glue, Opto, FET, Tube) with per-style saturation, ratio up to ∞, knee, auto release, hold, range, parallel mix, peak/RMS detection, stereo / M-S / mid-only / side-only, filtered external sidechain, lookahead with latency compensation, graphs and 12 presets. ~1 % CPU.
+
+**Install** — with [ReaPack](https://reapack.com): *Extensions → ReaPack → Import repositories*, paste
+`https://github.com/KevinMeneses/nube-plugins/raw/main/index.xml`, then install **Nube Comp**. Or copy `nube_comp.jsfx`
+into `REAPER/Effects/Nube Comp/` (on macOS `./install.sh` links it). It shows up as **JS: Nube Comp**. The interface is in Spanish.
+
+**How it was made** — designed and built with [Claude Code](https://claude.com/claude-code). Since an AI can't
+listen, every feature is verified by rendering test cases inside REAPER and comparing them with the theory
+(`tests/run.sh`), plus mouse-driven UI tests (`tests/ui_test.py`).
+
+**License** — GPL-3.0-or-later (see `LICENSE`).
+
+---
+
+## Español
+Compresor para REAPER (JSFX, macOS/Windows/Linux), hermano de [Nube EQ](https://github.com/KevinMeneses/nube-eq): fácil de usar, con todo lo de
 un compresor de pago y cinco "colores" de sonido.
 
 ![Nube Comp](docs/captura.png)
@@ -92,3 +113,5 @@ Crea un enlace en `~/Library/Application Support/REAPER/Effects/Nube Comp/`. En 
 - Trampas de EEL2 (las mismas del EQ): variables sin distinción de mayúsculas, nada de notación científica, y la
   interfaz corre en otro hilo: no comparte funciones con locales ni variables con el audio (la interfaz pide
   recalcular con `upd = 1` y el audio lo hace en `@block`).
+
+Nota sobre las pruebas: necesitan REAPER y Python con numpy, scipy y soundfile (`NUBE_PY=/ruta/a/python tests/run.sh`). Los casos con voz o música real usan grabaciones propias que no están en el repo (`tests/signals/`); sin ellas esos casos no se pueden correr.
