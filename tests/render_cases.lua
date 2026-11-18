@@ -55,7 +55,7 @@ for st = 0, 4 do
   CASES[#CASES + 1] = {"style" .. st, "step.wav", {[7] = st, [1] = -30, [2] = 4, [3] = 0, [4] = 5, [5] = 100}}
   CASES[#CASES + 1] = {"style" .. st .. "_auto", "step.wav", {[7] = st, [1] = -30, [2] = 4, [4] = 5, [5] = 100, [6] = 1, [8] = 60}}
 end
-for p = 1, 12 do CASES[#CASES + 1] = {"preset" .. p, p == 8 and "sidechain4.wav" or "step.wav", {[25] = p}, p == 8 and 4 or 2} end
+for p = 1, 25 do local sc = p == 8 or p == 21; CASES[#CASES + 1] = {"preset" .. p, sc and "sidechain4.wav" or "step.wav", {[25] = p}, sc and 4 or 2} end
 
 reaper.Main_OnCommand(40859, 0) -- nueva pestaña
 reaper.GetSetProjectInfo(0, "PROJECT_SRATE", 48000, true)
