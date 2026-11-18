@@ -6,7 +6,7 @@ A free compressor for [REAPER](https://www.reaper.fm), written as a JSFX (macOS 
 
 ![Nube Comp](docs/captura.png)
 
-5 styles (Clean, Glue, Opto, FET, Tube) with per-style saturation, ratio up to ∞, knee, auto release, hold, range, parallel mix, peak/RMS detection, stereo / M-S / mid-only / side-only, filtered external sidechain, lookahead with latency compensation, graphs and 12 presets. ~1 % CPU.
+5 styles (Clean, Glue, Opto, FET, Tube) with per-style saturation, ratio up to ∞, knee, auto release, hold, range, parallel mix, peak/RMS detection, stereo / M-S / mid-only / side-only, filtered external sidechain, lookahead with latency compensation, graphs and 25 presets. ~1 % CPU.
 
 **Install** — with [ReaPack](https://reapack.com): *Extensions → ReaPack → Import repositories*, paste
 `https://github.com/KevinMeneses/nube-plugins/raw/main/index.xml`, then install **Nube Comp**. Or copy `nube_comp.jsfx`
@@ -94,7 +94,7 @@ Crea un enlace en `~/Library/Application Support/REAPER/Effects/Nube Comp/`. En 
 - `tests/run.sh`: renderiza 49 casos en una pestaña temporal de REAPER y los compara con la teoría (56 chequeos, más que ningún render tenga NaN ni quede desalineado):
   curva estática (dura, rodilla, ∞:1, rango), ganancia y auto ganancia, mezcla, RMS, enlace, M/S, solo Mid/Side,
   sidechain externo, filtros y enfoque del SC, escuchar SC y cambios, tiempos de ataque/release/hold, lookahead
-  (y que la latencia quede compensada), armónicos del color, los 5 estilos y los 12 presets.
+  (y que la latencia quede compensada), armónicos del color, los 5 estilos y los 25 presets.
 - `tests/ui_demo.lua` / `tests/ui_close.lua`: abren y cierran una pestaña de demo con audio.
 - `tests/ui.py` + `tests/ui_dump.lua` + `tests/scroll.swift`: pruebas de la interfaz con el mouse (`cliclick`).
 - `tests/perf.lua`: CPU en el peor caso.

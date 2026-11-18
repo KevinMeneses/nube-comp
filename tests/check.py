@@ -102,9 +102,9 @@ for st in range(5):
     if st == 0: scalar("estilo Limpio GR", g[1800], 15, 0.3)
     else: inrange(f"estilo {st} GR sostenida", g[1800], 5, 16)
     inrange(f"estilo {st} + auto/color GR", grcurve(f"style{st}_auto")[1800], 3, 17)
-for p in range(1, 13):
-    if p == 8:
-        inrange("preset 8 (ducking) con SC", -10 - lvl("preset8", 0.4, 0.95), 3, 30)
+for p in range(1, 26):
+    if p in (8, 21):
+        inrange(f"preset {p} (ducking) con SC", -10 - lvl(f"preset{p}", 0.4, 0.95), 3, 30)
     else:
         x = load(f"preset{p}")[:, 0]; inrange(f"preset {p}: nivel parte fuerte", db(np.sqrt(np.mean(x[int(1.5 * SR):int(1.9 * SR)] ** 2)) * np.sqrt(2)), -30, 0)
 print("\nFALLAS:", fails)

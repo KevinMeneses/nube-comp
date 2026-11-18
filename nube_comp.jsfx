@@ -2,7 +2,7 @@ desc:Nube Comp - compresor (5 estilos, color, sidechain, M/S, lookahead)
 //tags: compressor dynamics sidechain mid-side lookahead saturation parallel
 //author: Kev Meneses + Claude (Claude Code)
 //license: GPL-3.0-or-later
-//version: 1.0.0
+//version: 1.1.0
 
 slider1:-18<-60,0,0.1>-Umbral (dB)
 slider2:4<1,30,0.01:log=4>-Ratio (30 = inf)
@@ -28,7 +28,7 @@ slider21:2000<100,10000,1:log=1000>-SC enfoque (Hz)
 slider22:0<-12,12,0.1>-SC enfoque (dB)
 slider23:0<0,1,1{Apagado,Encendido}>-Escuchar sidechain
 slider24:0<0,1,1{Normal,Solo lo que se comprime}>-Escuchar cambios
-slider25:0<0,12,1{-,Voz Tonor - Comp (Nube baja),Voz Tonor - Nivelador (Nube baja),Voz rap al frente (FET),Voz suave y pareja (Opto),808 / bajo parejo,Bateria pegada (Glue),Bateria paralela (NY),Sidechain kick a 808 (3/4),Master glue suave,Control de picos (casi limitador),Tubo calido (Rhodes / pads / coros),Por defecto}>-Cargar preset
+slider25:0<0,25,1{-,Voz Tonor - Comp (Nube baja),Voz Tonor - Nivelador (Nube baja),Voz rap al frente (FET),Voz suave y pareja (Opto),808 / bajo parejo,Bateria pegada (Glue),Bateria paralela (NY),Sidechain kick a 808 (3/4),Master glue suave,Control de picos (casi limitador),Tubo calido (Rhodes / pads / coros),Voz trap - autotune (FET rapido),Voz drill - agresiva,Voz paralela (NY),Coros / dobles atras (Opto),Bus de voces (Glue),Kick con punch (ataque lento),Snare / clap con cuerpo,Hi-hats parejos,Bus de beat / instrumentos (Glue),Sidechain suave a pads (3/4),Bajo synth / Reese (Opto),Master - solo centro (lados libres),Lo-fi aplastado (color),Por defecto}>-Cargar preset
 
 in_pin:Entrada L
 in_pin:Entrada R
@@ -215,7 +215,7 @@ a_mk = mk_t; a_mix = mix_t;
 relcA = relcB = exp(-1 / rel_smp);
 
 // ---------------------------------------------------------------- presets
-NPRESETS = 12;
+NPRESETS = 25;
 function preset_name(n)
 (
   n == 1 ? "Voz Tonor - Comp (Nube baja)" :
@@ -229,7 +229,20 @@ function preset_name(n)
   n == 9 ? "Master glue suave" :
   n == 10 ? "Control de picos (casi limitador)" :
   n == 11 ? "Tubo calido (Rhodes / pads / coros)" :
-  n == 12 ? "Por defecto" : "";
+  n == 12 ? "Voz trap - autotune (FET rapido)" :
+  n == 13 ? "Voz drill - agresiva" :
+  n == 14 ? "Voz paralela (NY)" :
+  n == 15 ? "Coros / dobles atras (Opto)" :
+  n == 16 ? "Bus de voces (Glue)" :
+  n == 17 ? "Kick con punch (ataque lento)" :
+  n == 18 ? "Snare / clap con cuerpo" :
+  n == 19 ? "Hi-hats parejos" :
+  n == 20 ? "Bus de beat / instrumentos (Glue)" :
+  n == 21 ? "Sidechain suave a pads (3/4)" :
+  n == 22 ? "Bajo synth / Reese (Opto)" :
+  n == 23 ? "Master - solo centro (lados libres)" :
+  n == 24 ? "Lo-fi aplastado (color)" :
+  n == 25 ? "Por defecto" : "";
 );
 // pr(estilo, umbral, ratio, rodilla, ataque, release, auto release, color, ganancia, auto ganancia)
 function pr(st, t, r, k, at, rl, ar, col, mk, amk)
@@ -254,6 +267,19 @@ function load_preset(n)
   n == 9 ? ( pr(1, -14, 2, 6, 30, 200, 1, 10, 1, 0); sset(19, 60); ) :
   n == 10 ? ( pr(0, -6, 30, 2, 0.1, 60, 0, 0, 0, 0); sset(9, 2); ) :
   n == 11 ? ( pr(4, -24, 2.5, 6, 20, 300, 0, 45, 0, 1); );
+  n == 12 ? ( pr(3, -24, 6, 2, 1, 50, 0, 25, 0, 1); sset(19, 100); );
+  n == 13 ? ( pr(3, -28, 8, 0, 0.5, 40, 0, 50, 0, 1); sset(19, 120); );
+  n == 14 ? ( pr(3, -32, 10, 0, 1, 60, 0, 40, 0, 1); sset(14, 30); sset(19, 100); );
+  n == 15 ? ( pr(2, -26, 4, 6, 15, 300, 1, 15, 0, 1); sset(19, 150); );
+  n == 16 ? ( pr(1, -16, 2, 6, 30, 150, 1, 10, 0, 1); sset(19, 100); );
+  n == 17 ? ( pr(0, -20, 4, 2, 30, 80, 0, 0, 0, 1); );
+  n == 18 ? ( pr(3, -22, 5, 2, 8, 100, 0, 20, 0, 1); );
+  n == 19 ? ( pr(0, -26, 3, 4, 2, 60, 0, 0, 0, 1); sset(19, 300); );
+  n == 20 ? ( pr(1, -16, 2, 4, 30, 200, 1, 10, 0, 1); sset(19, 80); );
+  n == 21 ? ( pr(0, -24, 3, 6, 5, 150, 0, 0, 0, 0); sset(18, 1); );
+  n == 22 ? ( pr(2, -22, 4, 4, 15, 200, 0, 15, 0, 1); );
+  n == 23 ? ( pr(1, -14, 1.8, 6, 30, 200, 1, 5, 0, 1); sset(17, 2); );
+  n == 24 ? ( pr(3, -35, 20, 0, 0.5, 200, 0, 80, 0, 1); sset(19, 150); );
   upd = 1;
 );
 
